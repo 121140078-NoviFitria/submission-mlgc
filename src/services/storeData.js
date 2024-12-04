@@ -1,21 +1,17 @@
 const { Firestore } = require('@google-cloud/firestore');
-const path = require('path');
 
-const pathKey = path.resolve('./submissionmlgc-novi-97f237e10889.json')
-
+// Menggunakan kredensial default yang sudah dikonfigurasi dengan gcloud
 async function storeData(id, data) {
-
   try {
     const db = new Firestore({
-      projectId: 'submissionmlgc-novi',
-      keyFilename: pathKey,
+      projectId: 'submissionmlgc-novi', // ID proyek Google Cloud Anda
     });
  
     const predictCollection = db.collection('predictions');
-    return predictCollection.doc(id).set(data);
-  }catch(error) {
-    console.error(error);
+    return await predictCollection.doc(id).set(data);
+  } catch (error) {
+    console.error('Error storing data:', error);
   }
 }
- 
+
 module.exports = storeData;
