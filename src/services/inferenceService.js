@@ -26,7 +26,7 @@ async function predictClassification(model, image) {
         "Segera periksa ke dokter!";
     } else {
       suggestion =
-        "Penyakit kanker tidak terdeteksi";
+        "Penyakit kanker tidak terdeteksi.";
     }
 
     return {
